@@ -127,4 +127,3 @@ with picamera.PiCamera(resolution='1280x720', framerate=24) as camera:
         server.serve_forever()
     finally:
         camera.stop_recording()
-yth
