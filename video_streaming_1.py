@@ -8,6 +8,7 @@ import logging
 import socketserver
 from threading import Condition
 from http import server
+from gpiozero import LED
 
 PAGE="""\
 <html>
@@ -125,5 +126,11 @@ with picamera.PiCamera(resolution='1280x720', framerate=24) as camera:
         address = ('', 8000)
         server = StreamingServer(address, StreamingHandler)
         server.serve_forever()
+
+        # Activating LEDs at start of the camera. There is no On/Off, LEDs work the whole time
+        # led indicates the pin on GPIO that will power LEDs
+        led = LED(21)
+        while True:
+            led.on()
     finally:
         camera.stop_recording()
