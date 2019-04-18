@@ -54,6 +54,9 @@ transform: rotate(90deg); /* W3C */
 </html>
 """
 
+
+# Activating LEDs at start of the camera. There is no On/Off, LEDs work the whole time
+# led indicates the pin on GPIO that will power LEDs
 leds = LEDBoard(16, 20, 21)
 leds.on()
 
@@ -122,7 +125,7 @@ class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
 with picamera.PiCamera(resolution='1280x720', framerate=24) as camera:
     output = StreamingOutput()
     #Uncomment the next line to change your Pi's Camera rotation (in degrees)
-    camera.rotation = 0
+    camera.rotation = 180
     camera.start_recording(output, format='mjpeg')
  
     try:
@@ -130,10 +133,5 @@ with picamera.PiCamera(resolution='1280x720', framerate=24) as camera:
         server = StreamingServer(address, StreamingHandler)
         server.serve_forever()
 
-        # Activating LEDs at start of the camera. There is no On/Off, LEDs work the whole time
-        # led indicates the pin on GPIO that will power LEDs
-        led = LED(21)
-        while True:
-            led.on()
     finally:
         camera.stop_recording()
