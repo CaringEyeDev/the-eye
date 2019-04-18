@@ -1,4 +1,4 @@
-# Web streaming example
+# Web streaming example updated now
 # Source code from the official PiCamera package
 # http://picamera.readthedocs.io/en/latest/recipes2.html#web-streaming
 
