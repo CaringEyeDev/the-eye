@@ -8,7 +8,7 @@ import logging
 import socketserver
 from threading import Condition
 from http import server
-from gpiozero import LED
+from gpiozero import LEDBoard
 
 PAGE="""\
 <html>
@@ -53,6 +53,9 @@ transform: rotate(90deg); /* W3C */
 </body>
 </html>
 """
+
+leds = LEDBoard(16, 20, 21)
+leds.on()
 
 class StreamingOutput(object):
     def __init__(self):
