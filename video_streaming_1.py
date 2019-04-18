@@ -57,6 +57,7 @@ transform: rotate(90deg); /* W3C */
 
 # Activating LEDs at start of the camera. There is no On/Off, LEDs work the whole time
 # led indicates the pin on GPIO that will power LEDs
+# test
 leds = LEDBoard(16, 20, 21)
 leds.on()
 
